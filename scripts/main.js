@@ -160,7 +160,7 @@ var onABulletHitEnemy = function(bulletSprite, enemySprite){
 
 //Player 2 Bullet
 var onEBulletHitWall = function(ebullet, wallSprite){
-  ebulletSprite.kill();
+  ebullet.kill();
 }
 
 var onEBulletHitAlly = function(ebullet, allySprite){
