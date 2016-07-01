@@ -41,11 +41,9 @@ class Tank{
   }
 
   fire(){
-    while (this.sprite.health > 0){
-      if(TankOnline.game.time.now - this.lastShotTime > 200){
-        this.lastShotTime = TankOnline.game.time.now;
-        new Bullet(this);
-      }
+    if(TankOnline.game.time.now - this.lastShotTime > 200 && this.sprite.alive){
+      this.lastShotTime = TankOnline.game.time.now;
+      new Bullet(this);
     }
   }
 }

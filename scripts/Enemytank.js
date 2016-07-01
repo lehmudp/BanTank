@@ -41,9 +41,10 @@ class EnemyTank{
   }
 
   fire(){
-    if(TankOnline.game.time.now - this.lastShotTime > 200){
+    if(TankOnline.game.time.now - this.lastShotTime > 200 && this.sprite.alive){
       this.lastShotTime = TankOnline.game.time.now;
       new enemyBullet(this);
     }
+
   }
 }
