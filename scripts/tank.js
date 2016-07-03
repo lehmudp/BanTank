@@ -7,7 +7,6 @@ class Tank{
     this.lastShotTime = TankOnline.game.time.now;
     this.sprite.body.collideWorldBounds = true;
     this.sprite.health = 5;
-    this.sprite.body.immovable = true;
   }
 
   update(direction){
@@ -37,13 +36,6 @@ class Tank{
     }
     else{
       this.sprite.body.velocity.y = 0;
-    }
-  }
-
-  fire(){
-    if(TankOnline.game.time.now - this.lastShotTime > 200 && this.sprite.alive){
-      this.lastShotTime = TankOnline.game.time.now;
-      new Bullet(this);
     }
   }
 }
