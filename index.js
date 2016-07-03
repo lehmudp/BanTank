@@ -11,13 +11,9 @@ app.get('/', function(req, res){
 
 io.on('connection', function(socket){
   console.log('New User Connected');
-  socket.emit('connected',
-  {
-    x:Math.random()*3200,
-    y:Math.random()*800
-  });
-});
 
+  socket.emit('connected', 'You have connected to server');
+});
 
 http.listen(6969, function(){
   console.log('Server started. Listening on *:6969');

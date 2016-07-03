@@ -51,14 +51,11 @@ var create = function(){
   TankOnline.bulletGroup = TankOnline.game.add.physicsGroup();
   TankOnline.tankGroup = TankOnline.game.add.physicsGroup();
 
-  TankOnline.createTank = function(newTank){
-    TankOnline.tank = new Tank(newTank.x, newTank.y, TankOnline.tankGroup);
-    TankOnline.inputController = new InputController(TankOnline.keyboard, TankOnline.tank);
-    TankOnline.game.camera.follow(TankOnline.tank.sprite);
-  }
+  var tank = new Tank(window.innerWidth/2, window.innerHeight/2, TankOnline.tankGroup);
+  TankOnline.inputController = new InputController(TankOnline.keyboard, tank);
 
   TankOnline.game.world.setBounds(0, 0, 3200, 800);
-
+  TankOnline.game.camera.follow(tank.sprite);
 
   for(var i=0;i<TankOnline.map.length;i++){
     for(var j=0;j<TankOnline.map[i].length;j++){
@@ -86,7 +83,7 @@ var update = function(){
     this
   );
 
-   if(TankOnline.inputController) TankOnline.inputController.update();
+  TankOnline.inputController.update();
 }
 
 /*
