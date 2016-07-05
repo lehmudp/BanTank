@@ -50,13 +50,6 @@ var create = function(){
   TankOnline.wallGroup = TankOnline.game.add.physicsGroup();
   TankOnline.bulletGroup = TankOnline.game.add.physicsGroup();
   TankOnline.tankGroup = TankOnline.game.add.physicsGroup();
-
-  TankOnline.createTank = function(newTank){
-    TankOnline.tank = new Tank(newTank.x, newTank.y, TankOnline.tankGroup);
-    TankOnline.inputController = new InputController(TankOnline.keyboard, TankOnline.tank);
-    TankOnline.game.camera.follow(TankOnline.tank.sprite);
-  }
-
   TankOnline.game.world.setBounds(0, 0, 3200, 800);
 
 
@@ -86,9 +79,10 @@ var update = function(){
     this
   );
 
-   if(TankOnline.inputController) TankOnline.inputController.update();
+  if(TankOnline.inputController){
+    TankOnline.inputController.update();
+  }
 }
-
 
 /*
  * PHYSICS EVENTS
@@ -107,3 +101,8 @@ var onBulletHitTank = function(bulletSprite, tankSprite){
 /*
  * GAME EVENTS
  */
+TankOnline.onConnected = function(position){
+  var tank = new Tank(position.x, position.y, TankOnline.tankGroup);
+  TankOnline.inputController = new InputController(TankOnline.keyboard, tank);
+  TankOnline.game.camera.follow(tank.sprite);
+}
