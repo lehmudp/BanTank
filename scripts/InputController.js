@@ -17,11 +17,14 @@ class InputController{
       else direction.y = 0;
 
       this.tank.update(direction);
+      TankOnline.client.reportMove(this.tank.sprite.id, direction, this.tank.sprite.position);
 
       if(this.keyboard.isDown(Phaser.KeyCode.SPACEBAR)
           && TankOnline.game.time.now - this.lastShotTime > 200){
         this.lastShotTime = TankOnline.game.time.now;
         this.fire();
+        TankOnline.client.reportBullet(this.tank.sprite.id);
+
       }
     }
   }
