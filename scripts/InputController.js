@@ -27,6 +27,7 @@ class InputController{
 
       }
     }
+    else TankOnline.client.reportDied(this.tank.sprite.id);
   }
 
   fire(){

@@ -149,3 +149,13 @@ TankOnline.onShotFired = function(id){
     }
   }
 }
+
+TankOnline.onTankDied = function(id){
+  for(var i=0; i<TankOnline.enemies.length; i++){
+    if(TankOnline.enemies[i].sprite.id == id){
+      // console.log(id);
+      TankOnline.enemies[i].sprite.destroy();
+      return;
+    }
+  }
+}

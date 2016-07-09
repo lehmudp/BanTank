@@ -46,6 +46,10 @@ io.on('connection', function(socket){
   socket.on('bullet_moved', function(msg){
     socket.broadcast.emit('shot_fired', msg);
   });
+
+  socket.on('tank_died', function(msg){
+    socket.broadcast.emit('player_died', msg);
+});
 });
 
 
